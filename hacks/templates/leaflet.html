@@ -9,6 +9,7 @@
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
         <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <style type="text/css">
             .leaflet-control-zoom-fullscreen { background-image: url(https://github.com/brunob/leaflet.fullscreen/raw/master/icon-fullscreen.png); }
             #map { width: 700px; height: 600px; border: 1px solid #ccc }
@@ -117,6 +118,55 @@
         map.addControl(layersControl);
     </script>
 
+    <h2>Time Information</h2>
+    <p>(Broken)</p>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Test', 'Stagecoach', 'First', 'Arriva', 'Other'],
+["00:00:00", 9234 , 7551 , 2059 , 4841 , ],
+["01:00:00", 9217 , 7549 , 2059 , 4836 , ],
+["02:00:00", 9209 , 7549 , 2059 , 4833 , ],
+["03:00:00", 9201 , 7549 , 2059 , 4830 , ],
+["04:00:00", 9195 , 7549 , 2058 , 4828 , ],
+["05:00:00", 9171 , 7529 , 2056 , 4823 , ],
+["06:00:00", 8999 , 7368 , 2036 , 4800 , ],
+["07:00:00", 8520 , 6964 , 1937 , 4650 , ],
+["08:00:00", 7858 , 6415 , 1787 , 4342 , ],
+["09:00:00", 7239 , 5909 , 1644 , 4027 , ],
+["10:00:00", 6599 , 5375 , 1484 , 3633 , ],
+["11:00:00", 5978 , 4837 , 1324 , 3252 , ],
+["12:00:00", 5364 , 4299 , 1164 , 2876 , ],
+["13:00:00", 4754 , 3758 , 1004 , 2509 , ],
+["14:00:00", 4129 , 3222 , 844 , 2132 , ],
+["15:00:00", 3498 , 2675 , 688 , 1746 , ],
+["16:00:00", 2861 , 2137 , 535 , 1383 , ],
+["17:00:00", 2224 , 1608 , 378 , 1020 , ],
+["18:00:00", 1607 , 1110 , 233 , 717 , ],
+["19:00:00", 1141 , 740 , 155 , 532 , ],
+["20:00:00", 812 , 536 , 117 , 398 , ],
+["21:00:00", 563 , 383 , 82 , 276 , ],
+["22:00:00", 342 , 233 , 47 , 159 , ],
+["23:00:00", 133 , 85 , 14 , 49 , ],
+        ]);
+
+        var options = {
+          title: 'Broken Monday Graph',
+          vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}},
+          isStacked: true
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
     <hr>
 
     <footer>

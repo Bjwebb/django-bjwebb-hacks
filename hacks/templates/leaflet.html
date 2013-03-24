@@ -82,7 +82,7 @@
                 attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
         });
 
-        var hostedTiles = new L.tileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.geography-class/{z}/{x}/{y}.png', {
+        var hostedTiles = new L.tileLayer('http://{s}.tiles.mapbox.com/v3/bjwebb.map-gqq4n83h/{z}/{x}/{y}.png', {
             attribution: 'Tiles Courtesy of <a href="http://tiles.mapbox.com/mapbox/map/geography-class" target="_blank">MapBox</a>',
             subdomains: ["a", "b", "c", "d"],
         });
@@ -98,7 +98,7 @@
         });
 
         map = new L.Map("map",{
-                layers: [lex, mbTiles],
+                layers: [hostedTiles, mbTiles],
                 center: [53.4750,-2.2522],
                 zoom: 9,
                 minZoom: 8,
@@ -108,7 +108,7 @@
         map.addControl(fullScreen);
 
         var baseLayers = {
-                "Hosted Tiles": hostedTiles,
+                "MapBox Tiles": hostedTiles,
                 "MapQuest OSM": mapquestOSM,
                 "Leaflet example": lex
         };
@@ -117,7 +117,7 @@
         };
 
         layersControl = new L.Control.Layers(baseLayers, overlays, {
-                collapsed: false
+                collapsed: true
         });
 
         map.addControl(layersControl);

@@ -110,6 +110,8 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'hacks',
+    'mbtilesmap',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -150,3 +152,7 @@ LOGGING = {
         },
     }
 }
+
+
+# FIXME (for mbtiles)
+MEDIA_ROOT = '/home/bjwebb/code/bus/map'

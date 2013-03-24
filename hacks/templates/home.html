@@ -1,0 +1,8 @@
+{% load mbtilesmap_tags %}
+
+{% block head %}
+{% include "mbtilesmap/head.html" %}
+{% comment %}{{ block.super }}{% endcomment %}
+{% endblock head %}
+
+{% mbtilesmap 'bus.mbtiles' %}

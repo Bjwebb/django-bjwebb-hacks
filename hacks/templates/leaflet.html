@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Who Runs That Bus?</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .leaflet-control-zoom-fullscreen { background-image: url(https://github.com/brunob/leaflet.fullscreen/raw/master/icon-fullscreen.png); }
+            #map { width: 700px; height: 600px; border: 1px solid #ccc }
+            /* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+            #map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+            #map:-moz-full-screen { width: 100% !important; height: 100% !important; }
+            #map:full-screen { width: 100% !important; height: 100% !important; }
+	</style>
+</head>
+<body>
+    <div class="container">
+    <div class="hero-unit">
+        <h1>Who Runs That Bus?</h1>
+        <p>
+            Description.
+        </p>
+    </div>
+    <h2>Check a service</h2>
+    <form><input type="text" id="service"><input type="button" value="Submit"></form>
+
+
+    <h2>Map</h2>
+    <div id="map"></div>
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+    <script src="https://raw.github.com/brunob/leaflet.fullscreen/master/Control.FullScreen.js"></script>
+    <script>
+        var map;
+
+        var mapquestOSM = new L.TileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+                subdomains: ["otile1", "otile2", "otile3", "otile4"],
+                attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+        });
+
+        var hostedTiles = new L.tileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.geography-class/{z}/{x}/{y}.png', {
+            attribution: 'Tiles Courtesy of <a href="http://tiles.mapbox.com/mapbox/map/geography-class" target="_blank">MapBox</a>',
+            subdomains: ["a", "b", "c", "d"],
+        });
+
+        var lex = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/22677/256/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+                key: 'BC9A493B41014CAABB98F0471D759707'
+        })
+
+        var mbTiles = new L.tileLayer('/bus/{z}/{x}/{y}.png', {
+            attribution: 'Tiles Courtesy of <a href="http://tiles.mapbox.com/mapbox/map/geography-class" target="_blank">MapBox</a>',
+            opacity: 0.7
+        });
+
+        map = new L.Map("map",{
+                layers: [lex, mbTiles],
+                center: [53.4750,-2.2522],
+                zoom: 9,
+                minZoom: 8,
+                maxZoom: 16
+        });
+        var fullScreen = new L.Control.FullScreen(); 
+        map.addControl(fullScreen);
+
+        var baseLayers = {
+                "Hosted Tiles": hostedTiles,
+                "MapQuest OSM": mapquestOSM,
+                "Leaflet example": lex
+        };
+        var overlays = {
+                "Local MBTiles File": mbTiles
+        };
+
+        layersControl = new L.Control.Layers(baseLayers, overlays, {
+                collapsed: false
+        });
+
+        map.addControl(layersControl);
+    </script>
+
+    <hr>
+
+    <footer>
+
+    </footer>
+    </div>
+</body>
+</html>

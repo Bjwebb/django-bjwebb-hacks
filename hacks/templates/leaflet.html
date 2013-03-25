@@ -17,6 +17,16 @@
             #map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
             #map:-moz-full-screen { width: 100% !important; height: 100% !important; }
             #map:full-screen { width: 100% !important; height: 100% !important; }
+
+            #push, #footer {
+                height: 60px;
+            }
+            #footer {
+                background-color: #f5f5f5;
+            }
+            .container .credit {
+                margin: 20px 0;
+            }
 	</style>
 </head>
 <body>
@@ -150,12 +160,16 @@
       <button class="btn" onclick="day='sunday';drawChart()">Sunday</button>
     </div>
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="push"></div>
+    </div>
+    </div>
 
-    <hr>
-
-    <footer>
-
-    </footer>
+    <div id="footer">
+    <div class="container">
+    <p class="muted credit">
+    Created by <a href="http://bjwebb.co.uk">Ben Webb</a> for <a href="http://futureeverything.org/summit/conference/workshops-fringe-events/innovation-challenge/">Routes to the Future</a> in March 2013.
+    </p>
+    </div>
     </div>
 </body>
 </html>

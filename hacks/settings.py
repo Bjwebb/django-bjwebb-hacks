@@ -111,6 +111,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'hacks',
+    'iati',
     'whorunsthatbus',
     'mbtilesmap',
     'django.contrib.auth',

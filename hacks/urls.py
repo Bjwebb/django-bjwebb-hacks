@@ -9,6 +9,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='/whorunsthatbus/', permanent=False)),
+    url(r'^iati/', include('iati.urls')),
     url(r'^whorunsthatbus/', include('whorunsthatbus.urls')),
     url(r'^mbtilesmap/', include('mbtilesmap.urls', namespace='mb', app_name='mbtilesmap')),
 
